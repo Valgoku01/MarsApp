@@ -12,7 +12,7 @@ namespace MarsApp
             var unityContainer = new UnityContainer();
             if (unityContainer != null)
             {
-                var system = unityContainer.Resolve<SystemApp>();
+                var system = unityContainer.Resolve<SystemAppViewModel>();
                 if (system != null)
                 {
                     system.InitSystem();

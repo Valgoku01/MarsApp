@@ -68,6 +68,11 @@ namespace MarsApp.Model
                 _initial_position_y = y;
 
             _initial_direction = enumUtilities.GetDirection(position[4]);
+            if (_initial_direction == EnumUtilities.Direction.WRONG)
+            {
+                ReleaseMemory();
+                return false;
+            }
 
             _movements = new List<char>();
             for (var i = 0; i < movement.Length; i++)
@@ -122,9 +127,10 @@ namespace MarsApp.Model
             var currentY = _initial_position_y;
 
             // algo
-            foreach (var movement in _movements)
+            var continueParsing = true;
+            for(var i = 0; i < _movements.Count && continueParsing; i++)
             {
-                var move = enumUtilities.GetDirection(movement);
+                var move = enumUtilities.GetDirection(_movements[i]);
                 if (move != EnumUtilities.Direction.WRONG)
                 {
                     if (move == EnumUtilities.Direction.M)
@@ -134,9 +140,13 @@ namespace MarsApp.Model
                     else if (move == EnumUtilities.Direction.R)
                         ChangeDirection(EnumUtilities.Direction.R, currentDirection, ref currentDirection);
                 }
+                else
+                {
+                    continueParsing = false;
+                }
             }
 
-            if (currentX < 0 || currentY < 0)
+            if (currentX < 0 || currentY < 0 || !continueParsing)
                 return string.Empty;
 
             var strToRet = string.Empty;

@@ -8,7 +8,7 @@ namespace MarsApp.ViewModel
     /// <summary>
     /// Class of the system
     /// </summary>
-    public class SystemApp : ISystem
+    public class SystemAppViewModel : ISystem
     {
         private IUnityContainer _container;
 
@@ -16,7 +16,7 @@ namespace MarsApp.ViewModel
         /// Constructor
         /// </summary>
         /// <param name="container">Unity container</param>
-        public SystemApp(IUnityContainer container)
+        public SystemAppViewModel(IUnityContainer container)
         {
             _container = container;
         }

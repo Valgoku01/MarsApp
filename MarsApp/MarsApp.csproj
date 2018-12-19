@@ -75,7 +75,7 @@
     <Compile Include="Utilities\EnumUtilities.cs" />
     <Compile Include="Utilities\FileUtilities.cs" />
     <Compile Include="ViewModel\EngineViewModel.cs" />
-    <Compile Include="ViewModel\SystemApp.cs" />
+    <Compile Include="ViewModel\SystemAppViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
