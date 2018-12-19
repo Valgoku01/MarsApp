@@ -1,8 +1,6 @@
 Let's explore Mars !
 
-
 To launch the app
-
 
 -you need to be on Windows
 
@@ -26,7 +24,6 @@ MMRMMRMRRM
 
 
 Explanation:
-
 
 5 5 : size of your map : x y
 
