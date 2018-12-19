@@ -1,15 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MarsApp.ViewModel;
+using Unity;
 
 namespace MarsApp
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
+            if (args == null || args.Length != 1) return;
+
+            var unityContainer = new UnityContainer();
+            if (unityContainer != null)
+            {
+                var system = unityContainer.Resolve<SystemApp>();
+                if (system != null)
+                {
+                    system.InitSystem();
+                    system.Run(args);
+                }
+            }
         }
     }
 }
+
