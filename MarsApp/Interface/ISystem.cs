@@ -1,11 +1,11 @@
-﻿using Unity;
+﻿using System;
 
 namespace MarsApp.Interface
 {
     /// <summary>
     /// Interface to set the system
     /// </summary>
-    public interface ISystem
+    public interface ISystem : IDisposable
     {
         /// <summary>
         /// Init the system
