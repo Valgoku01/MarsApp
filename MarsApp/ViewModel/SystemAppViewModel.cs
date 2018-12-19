@@ -69,9 +69,18 @@ namespace MarsApp.ViewModel
         /// <summary>
         /// Release memory
         /// </summary>
+        public void ReleaseSystem()
+        {
+            Dispose();
+        }
+
+        /// <summary>
+        /// Release memory
+        /// </summary>
         public void Dispose()
         {
-            _container.Dispose();
+            if (_container != null)
+                _container.Dispose();
         }
     }
 }

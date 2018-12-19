@@ -17,7 +17,7 @@ namespace MarsApp
                 {
                     system.InitSystem();
                     system.Run(args);
-                    system.Dispose();
+                    system.ReleaseSystem();
                 }
             }
         }
