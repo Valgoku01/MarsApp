@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsApp", "MarsApp\MarsApp.csproj", "{AA68F42D-929B-4C62-B79E-40003F4A7BDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA68F42D-929B-4C62-B79E-40003F4A7BDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA68F42D-929B-4C62-B79E-40003F4A7BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA68F42D-929B-4C62-B79E-40003F4A7BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA68F42D-929B-4C62-B79E-40003F4A7BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9D2C3D6B-1398-4F16-8217-D2DAA9170D69}
+	EndGlobalSection
+EndGlobal
