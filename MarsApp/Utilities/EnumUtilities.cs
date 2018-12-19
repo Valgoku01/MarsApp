@@ -62,7 +62,7 @@ namespace MarsApp.Utilities
                     return "L";
             }
 
-            return Constants.WRONG.ToUpper();
+            return Constants.WRONG;
         }
     }
 }

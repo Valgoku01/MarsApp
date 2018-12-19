@@ -142,8 +142,10 @@ namespace MarsApp.Model
             var strToRet = string.Empty;
             try
             {
-                strToRet = string.Format("{0} {1} {2}",
-                    currentX, currentY, EnumUtilities.GetDirectionString(currentDirection));
+                var direction = EnumUtilities.GetDirectionString(currentDirection);
+                if (direction != Constants.WRONG)
+                    strToRet = string.Format("{0} {1} {2}", currentX, currentY, direction);
+                
             }
             catch (Exception e)
             {
