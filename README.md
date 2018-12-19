@@ -29,7 +29,11 @@ Explanation:
 
 
 5 5 : size of your map : x y
+
 1 2 N : position of the first rover
+
 LMLMLMLMM : movement of the first rover
+
 3 3 E : position of the second rover
+
 MMRMMRMRRM : movement of the second rover
