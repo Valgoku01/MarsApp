@@ -34,3 +34,9 @@ LMLMLMLMM : movement of the first rover
 3 3 E : position of the second rover
 
 MMRMMRMRRM : movement of the second rover
+
+Result:
+
+1 3 N
+
+5 1 E
