@@ -212,8 +212,8 @@ namespace MarsApp.Model
         /// </summary>
         /// <param name="move">Move</param>
         /// <param name="direction">New direction to take in account</param>
-        /// <param name="myout">Final new direction</param>
-        private void ChangeDirection(EnumUtilities.Direction move, EnumUtilities.Direction direction, ref EnumUtilities.Direction myout)
+        /// <param name="finalNewDirection">Final new direction</param>
+        private void ChangeDirection(EnumUtilities.Direction move, EnumUtilities.Direction direction, ref EnumUtilities.Direction finalNewDirection)
         {
             var newDirection = direction;
             switch (direction)
@@ -231,7 +231,7 @@ namespace MarsApp.Model
                     newDirection = move == EnumUtilities.Direction.L ? EnumUtilities.Direction.E : EnumUtilities.Direction.O;
                     break;
             }
-            myout = newDirection;
+            finalNewDirection = newDirection;
         }
 
         /// <summary>
