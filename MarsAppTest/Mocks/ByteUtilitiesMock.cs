@@ -9,11 +9,7 @@ namespace MarsAppTest.Mocks
     {
         public bool ByteValid { get; set; }
         public byte[] Bytes { get; set; }
-
-        public ByteUtilitiesMock()
-        {
-
-        }
+        public bool IsCharEOT { get; set; }
 
         public byte[] GetBytes(string charToTransform)
         {
@@ -23,6 +19,11 @@ namespace MarsAppTest.Mocks
         public bool IsByteValidInAscii(byte byteToCompare)
         {
             return ByteValid;
+        }
+
+        public bool IsCharEmptyOrTab(char byteToCompare)
+        {
+            return IsCharEOT;
         }
     }
 }

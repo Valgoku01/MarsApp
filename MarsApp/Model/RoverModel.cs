@@ -48,6 +48,9 @@ namespace MarsApp.Model
         /// <returns>True if rover is started, false otherwise</returns>
         public bool StartRover(string position, string movement)
         {
+            var byteUtilities = _container.Resolve<IByteUtilities>();
+            if (byteUtilities == null) return false;
+
             if (_maximum_x < 0 || _maximum_y < 0) return false;
             if (string.IsNullOrEmpty(position) || string.IsNullOrEmpty(movement) || position.Length != 5) return false;
 
@@ -76,7 +79,8 @@ namespace MarsApp.Model
 
             _movements = new List<char>();
             for (var i = 0; i < movement.Length; i++)
-                _movements.Add(movement[i]);
+                if (!byteUtilities.IsCharEmptyOrTab(movement[i]))
+                    _movements.Add(movement[i]);
 
             if (!IsRoverReadyToDrive())
             {

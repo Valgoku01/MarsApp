@@ -47,5 +47,15 @@ namespace MarsApp.Utilities
                 byteToCompare == 32 ||
                 byteToCompare == 11;
         }
+
+        /// <summary>
+        /// Check if the char is empty of vertical tab
+        /// </summary>
+        /// <param name="charToCompare">Char to compare</param>
+        /// <returns>True, false otherwise</returns>
+        public bool IsCharEmptyOrTab(char charToCompare)
+        {
+            return charToCompare == 32 || charToCompare == 11;
+        }
     }
 }
