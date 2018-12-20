@@ -42,7 +42,7 @@ namespace MarsApp.Utilities
         /// </summary>
         /// <param name="direction">Direction to translate</param>
         /// <returns>Direction as string</returns>
-        public static string GetDirectionString(Direction direction)
+        public string GetDirectionString(Direction direction)
         {
             switch (direction)
             {

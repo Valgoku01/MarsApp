@@ -61,12 +61,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base.cs" />
     <Compile Include="Interface\IByteUtilities.cs" />
     <Compile Include="Interface\IEngineViewModel.cs" />
     <Compile Include="Interface\IEnumUtilities.cs" />
     <Compile Include="Interface\IFileUtilities.cs" />
     <Compile Include="Interface\IRover.cs" />
-    <Compile Include="Interface\ISystem.cs" />
+    <Compile Include="Interface\ISystemApp.cs" />
     <Compile Include="Model\RoverModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

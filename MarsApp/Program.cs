@@ -9,16 +9,17 @@ namespace MarsApp
         {
             if (args == null || args.Length != 1) return;
 
-            var unityContainer = new UnityContainer();
-            if (unityContainer != null)
+            var baseApp = new Base();
+            if (baseApp != null)
             {
-                var system = unityContainer.Resolve<SystemAppViewModel>();
-                if (system != null)
+                if (baseApp.InitBase())
                 {
-                    system.InitSystem();
-                    system.Run(args);
-                    system.ReleaseSystem();
+                    var system = baseApp.Container.Resolve<SystemAppViewModel>();
+                    if (system != null)
+                        system.Run(args, baseApp.Container);
                 }
+
+                baseApp.Dispose();
             }
         }
     }

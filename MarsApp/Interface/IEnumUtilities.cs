@@ -13,5 +13,12 @@ namespace MarsApp.Interface
         /// <param name="str">char to compare</param>
         /// <returns>Direction as enum</returns>
         Direction GetDirection(char str);
+
+        /// <summary>
+        /// Get the direction as string
+        /// </summary>
+        /// <param name="direction">Direction to translate</param>
+        /// <returns>Direction as string</returns>
+        string GetDirectionString(Direction direction);
     }
 }
