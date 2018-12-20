@@ -4,7 +4,7 @@ To launch the app
 
 -you need to be on Windows
 
--to have compiled your program in debug or release mode
+-to have compiled your program (debug or release)
 
 -open a command line
 
