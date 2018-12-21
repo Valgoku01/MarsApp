@@ -8,6 +8,8 @@ To launch the app
 
 -to run with another dataset, use the following CL, where the parameter is the 'path' of your file (.txt): MarsApp.exe [path]
 
+-the main file is MarsApp/Program.cs
+
 Example of data needed:
 
 5 5
