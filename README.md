@@ -4,13 +4,7 @@ To launch the app
 
 -you need to be on Windows
 
--to have compiled your program (debug or release)
-
--open a command line
-
--go to the folder of build (debug or release) and launch: MarsApp.exe [_your_file_of_data_]
-
-[_your_file_of_data_] : the path of your file with all data needed for the run
+-run the MarsApp.exe in MarsApp/binary with a CLI
 
 Example of data needed:
 
