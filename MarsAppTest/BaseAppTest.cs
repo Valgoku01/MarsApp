@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MarsAppTest
 {
     [TestClass]
-    public class BaseTest
+    public class BaseAppTest
     {
         [TestMethod]
         public void TestMethod1()
