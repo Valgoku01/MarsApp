@@ -11,14 +11,14 @@ namespace MarsAppTest
     /// Could also use the class 'Mock' for mocking classes of the app
     /// Needs more dependencies
     /// </summary>
-    public class BaseClass : IDisposable
+    public class BaseApp : IDisposable
     {
         protected UnityContainer Container;
 
         protected ByteUtilitiesMock ByteUtilities;
         protected FileUtilitiesMock FileUtilities;
 
-        public BaseClass()
+        public BaseApp()
         {
             Container = new UnityContainer();
 

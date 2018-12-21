@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MarsAppTest.Model
 {
     [TestClass]
-    public class RoverModelTest : BaseClass
+    public class RoverModelTest : BaseApp
     {
         [TestMethod]
         public void RoverModelTest_StartRover()

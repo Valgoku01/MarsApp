@@ -9,7 +9,7 @@ namespace MarsAppTest
         [TestMethod]
         public void TestMethod1()
         {
-            var baseToTest = new BaseApp();
+            var baseToTest = new MarsApp.BaseApp();
             Assert.IsTrue(baseToTest.InitBase());
             baseToTest.Dispose();
         }

@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MarsAppTest.ViewModel
 {
     [TestClass]
-    public class EngineViewModelTest : BaseClass
+    public class EngineViewModelTest : BaseApp
     {
         [TestMethod]
         public void EngineViewModelTest_ParseData()

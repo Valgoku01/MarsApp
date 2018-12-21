@@ -5,7 +5,7 @@ using System;
 namespace MarsAppTest.ViewModel
 {
     [TestClass]
-    public class SystemAppViewModelTest : BaseClass
+    public class SystemAppViewModelTest : BaseApp
     {
         [TestMethod]
         public void SystemAppViewModelTest_Nominal()

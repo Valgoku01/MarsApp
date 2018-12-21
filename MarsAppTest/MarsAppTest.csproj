@@ -73,7 +73,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseClass.cs" />
+    <Compile Include="BaseApp.cs" />
     <Compile Include="BaseTest.cs" />
     <Compile Include="Mocks\ByteUtilitiesMock.cs" />
     <Compile Include="Mocks\EnumUtilitiesMock.cs" />
