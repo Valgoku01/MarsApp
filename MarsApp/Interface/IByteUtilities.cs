@@ -18,12 +18,5 @@
         /// <param name="byteToCompare">char to compare</param>
         /// <returns>True is byte valid, false otherwise</returns>
         bool IsByteValidInAscii(byte byteToCompare);
-
-        /// <summary>
-        /// Check if the char is empty of vertical tab
-        /// </summary>
-        /// <param name="charToCompare">Char to compare</param>
-        /// <returns>True, false otherwise</returns>
-        bool IsCharEmptyOrTab(char charToCompare);
     }
 }

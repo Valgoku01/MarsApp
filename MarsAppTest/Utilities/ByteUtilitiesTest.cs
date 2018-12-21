@@ -32,14 +32,5 @@ namespace MarsAppTest.Utilities
             Assert.IsTrue(utilities.IsByteValidInAscii(97));
             Assert.IsFalse(utilities.IsByteValidInAscii(20));
         }
-
-        [TestMethod]
-        public void ByteUtilitiesTest_IsCharEmptyOrTab()
-        {
-            var utilities = new ByteUtilities();
-
-            Assert.IsTrue(utilities.IsCharEmptyOrTab(' '));
-            Assert.IsFalse(utilities.IsCharEmptyOrTab('z'));
-        }
     }
 }
