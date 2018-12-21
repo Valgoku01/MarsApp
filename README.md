@@ -4,7 +4,7 @@ To launch the app
 
 -you need to be on Windows
 
--run the MarsApp.exe in MarsApp/binary with a CLI
+-run the MarsApp.exe in MarsApp/binary with a CLI with the following command line: MarsApp.exe Direction.txt
 
 Example of data needed:
 
