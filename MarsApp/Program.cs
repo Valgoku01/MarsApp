@@ -3,6 +3,10 @@ using Unity;
 
 namespace MarsApp
 {
+    /// <summary>
+    /// Simulate rovers moves on Mars
+    /// Program made by Valentin BIAUD
+    /// </summary>
     public class Program
     {
         static void Main(string[] args)
