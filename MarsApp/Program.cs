@@ -9,7 +9,7 @@ namespace MarsApp
         {
             if (args == null || args.Length != 1) return;
 
-            var baseApp = new Base();
+            var baseApp = new BaseApp();
             if (baseApp != null)
             {
                 if (baseApp.InitBase())

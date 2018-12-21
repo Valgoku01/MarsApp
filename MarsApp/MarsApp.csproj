@@ -61,7 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base.cs" />
+    <Compile Include="BaseApp.cs" />
     <Compile Include="Interface\IByteUtilities.cs" />
     <Compile Include="Interface\IEngineViewModel.cs" />
     <Compile Include="Interface\IEnumUtilities.cs" />

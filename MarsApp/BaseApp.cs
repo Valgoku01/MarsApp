@@ -8,14 +8,14 @@ namespace MarsApp
     /// <summary>
     /// Main container for the app
     /// </summary>
-    public class Base : IDisposable
+    public class BaseApp : IDisposable
     {
         public IUnityContainer Container;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public Base()
+        public BaseApp()
         {
             Container = new UnityContainer();
         }
