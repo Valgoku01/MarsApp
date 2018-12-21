@@ -8,6 +8,8 @@ namespace MarsAppTest
 {
     /// <summary>
     /// Mother class of test classes needing mocks
+    /// Could also use the class 'Mock' for mocking classes of the app
+    /// Needs more dependencies
     /// </summary>
     public class BaseClass : IDisposable
     {
