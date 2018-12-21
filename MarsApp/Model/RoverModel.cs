@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using MarsApp.Interface;
 using MarsApp.Utilities;
 using Unity;
@@ -15,15 +14,15 @@ namespace MarsApp.Model
     {
         #region Attributes
         private IUnityContainer _container;
-        private int _maximum_x = -1;
-        private int _maximum_y = -1;
-        private int _initial_position_x = -1;
-        private int _initial_position_y = -1;
-        private int _final_position_x = -1;
-        private int _final_position_y = -1;
+        private long _maximum_x = -1;
+        private long _maximum_y = -1;
+        private long _initial_position_x = -1;
+        private long _initial_position_y = -1;
+        private long _final_position_x = -1;
+        private long _final_position_y = -1;
         private EnumUtilities.Direction _initial_direction = EnumUtilities.Direction.WRONG;
         private EnumUtilities.Direction _final_direction = EnumUtilities.Direction.WRONG;
-        private List<char> _movements = null;
+        private char[] _movements = null;
         #endregion
 
         #region Functions
@@ -31,28 +30,26 @@ namespace MarsApp.Model
         /// Constructor
         /// </summary>
         /// <param name="container">container</param>
-        /// <param name="max_size_x">The rover can not go further than max_size_x in x axe</param>
-        /// <param name="map_size_y">The rover can not go further than max_size_y in y axe</param>
-        public RoverModel(IUnityContainer container, int max_size_x, int map_size_y)
+        public RoverModel(IUnityContainer container)
         {
             _container = container;
-            _maximum_x = max_size_x;
-            _maximum_y = map_size_y;
         }
 
         /// <summary>
         /// Start the rover
         /// </summary>
+        /// <param name="max_size_x">The rover can not go further than max_size_x in x axe</param>
+        /// <param name="map_size_y">The rover can not go further than max_size_y in y axe</param>
         /// <param name="position">Initial position</param>
         /// <param name="movement">New movements</param>
         /// <returns>True if rover is started, false otherwise</returns>
-        public bool StartRover(string position, string movement)
+        public bool StartRover(int max_size_x, int map_size_y, string position, string movement)
         {
             var byteUtilities = _container.Resolve<IByteUtilities>();
             if (byteUtilities == null) return false;
 
-            if (_maximum_x < 0 || _maximum_y < 0) return false;
-            if (string.IsNullOrEmpty(position) || string.IsNullOrEmpty(movement) || position.Length != 5) return false;
+            if (max_size_x < 1 || map_size_y < 1) return false;
+            if (string.IsNullOrEmpty(position) || string.IsNullOrEmpty(movement)) return false;
 
             var enumUtilities = _container.Resolve<IEnumUtilities>();
             if (enumUtilities == null) return false;
@@ -60,27 +57,35 @@ namespace MarsApp.Model
             var list = position.Split(' ');
             if (list.Length == 0 || list.Length != 3) return false;
 
-            var p_str = "";
-            p_str = list[0];
-            if (int.TryParse(p_str, out int x))
+            _maximum_x = max_size_x;
+            _maximum_y = map_size_y;
+
+            if (int.TryParse(list[0], out int x))
                 _initial_position_x = x;
 
-            p_str = "";
-            p_str = list[1];
-            if (int.TryParse(p_str, out int y))
+            if (int.TryParse(list[1], out int y))
                 _initial_position_y = y;
 
-            _initial_direction = enumUtilities.GetDirection(position[4]);
-            if (_initial_direction == EnumUtilities.Direction.WRONG)
+            try
             {
+                // ToCharArray can throw exception
+                _initial_direction = enumUtilities.GetDirection(list[2].ToCharArray()[0]);
+                if (_initial_direction == EnumUtilities.Direction.WRONG)
+                {
+                    ReleaseMemory();
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                var exception = e;
                 ReleaseMemory();
                 return false;
             }
+            
 
-            _movements = new List<char>();
-            for (var i = 0; i < movement.Length; i++)
-                if (!byteUtilities.IsCharEmptyOrTab(movement[i]))
-                    _movements.Add(movement[i]);
+            var charsToTrim = new char[] {' ', '\t'};
+            _movements = movement.Trim(charsToTrim).ToCharArray();
 
             if (!IsRoverReadyToDrive())
             {
@@ -96,7 +101,24 @@ namespace MarsApp.Model
         /// </summary>
         public string CalculateNewPosition()
         {
-            return IsRoverReadyToDrive() ? CalculatePosition() : string.Empty;
+            try
+            {
+                var enumUtilities = _container.Resolve<EnumUtilities>();
+                var strToRet = string.Empty;
+                var direction = enumUtilities.GetDirectionString(_initial_direction);
+                if (direction != Constants.WRONG)
+                    strToRet = string.Format("{0} {1} {2}", _initial_position_x, _initial_position_y, direction);
+
+                return IsRoverReadyToDrive() ?
+                    CalculatePosition() : CanUseInitialPositions() ?
+                        strToRet : string.Empty;
+            }
+            catch (Exception e)
+            {
+                // to have 0 warnings
+                var exception = e;
+                return string.Empty;
+            }
         }
 
         /// <summary>
@@ -108,14 +130,22 @@ namespace MarsApp.Model
         }
 
         /// <summary>
+        /// Are initial positions set ?
+        /// </summary>
+        /// <returns>True, false otherwise</returns>
+        private bool CanUseInitialPositions()
+        {
+            return _initial_position_x >= 0 && _initial_position_y >= 0 &&
+                _initial_direction != EnumUtilities.Direction.WRONG;
+        }
+
+        /// <summary>
         /// Does the rover have some moves to do ?
         /// </summary>
         /// <returns>True, false otherwise</returns>
         private bool IsRoverReadyToDrive()
         {
-            return _initial_position_x >= 0 && _initial_position_y >= 0 &&
-                _movements != null && _movements.Count > 0 &&
-                _initial_direction != EnumUtilities.Direction.WRONG;
+            return CanUseInitialPositions() && _movements != null && _movements.Length > 0;
         }
 
         /// <summary>
@@ -132,7 +162,7 @@ namespace MarsApp.Model
 
             // algo
             var continueParsing = true;
-            for(var i = 0; i < _movements.Count && continueParsing; i++)
+            for(var i = 0; i < _movements.Length && continueParsing; i++)
             {
                 var move = enumUtilities.GetDirection(_movements[i]);
                 if (move != EnumUtilities.Direction.WRONG)
@@ -151,7 +181,9 @@ namespace MarsApp.Model
             }
 
             if (currentX < 0 || currentY < 0 || !continueParsing)
+            {
                 return string.Empty;
+            }
 
             var strToRet = string.Empty;
             try
@@ -159,7 +191,6 @@ namespace MarsApp.Model
                 var direction = enumUtilities.GetDirectionString(currentDirection);
                 if (direction != Constants.WRONG)
                     strToRet = string.Format("{0} {1} {2}", currentX, currentY, direction);
-                
             }
             catch (Exception e)
             {
@@ -183,9 +214,9 @@ namespace MarsApp.Model
         /// <param name="direction">New direction</param>
         /// <param name="x">x to modify if needed</param>
         /// <param name="y">y to modify if needed</param>
-        private void Move(EnumUtilities.Direction direction, ref int x, ref int y)
+        private void Move(EnumUtilities.Direction direction, ref long x, ref long y)
         {
-            var res = 0;
+            long res = 0;
             switch (direction)
             {
                 case EnumUtilities.Direction.E:
@@ -257,7 +288,7 @@ namespace MarsApp.Model
         /// <param name="x">New x position</param>
         /// <param name="y">New y position</param>
         /// <param name="direction">New direction</param>
-        private void SetFinalAttributes(int x, int y, EnumUtilities.Direction direction)
+        private void SetFinalAttributes(long x, long y, EnumUtilities.Direction direction)
         {
             _final_position_x = x;
             _final_position_y = y;
@@ -272,6 +303,8 @@ namespace MarsApp.Model
             SetInitialAttributes(-1, -1, EnumUtilities.Direction.WRONG);
             SetFinalAttributes(-1, -1, EnumUtilities.Direction.WRONG);
             _movements = null;
+            _maximum_x = -1;
+            _maximum_y = -1;
         }
         #endregion
     }

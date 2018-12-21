@@ -63,8 +63,8 @@ namespace MarsApp.ViewModel
             _rovers = new List<RoverModel>();
             for (var i = 1; i < data.Count && i + 1 < data.Count; i += 1)
             {
-                var newCar = new RoverModel(_container, _length_x, _length_y);
-                if (newCar.StartRover(data[i], data[i + 1]))
+                var newCar = new RoverModel(_container);
+                if (newCar.StartRover(_length_x, _length_y, data[i], data[i + 1]))
                     _rovers.Add(newCar);
             }
 
