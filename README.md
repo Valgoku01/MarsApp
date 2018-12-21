@@ -6,6 +6,8 @@ To launch the app
 
 -run the MarsApp.exe in MarsApp/binary with a CLI with the following command line: MarsApp.exe Direction.txt
 
+-to run with another dataset, use the following command line, where the parameter is the 'path' of your file (.txt): MarsApp.exe [path]
+
 Example of data needed:
 
 5 5
