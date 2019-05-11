@@ -35,6 +35,8 @@ LMLMLMLMM : movement of the first rover
 
 MMRMMRMRRM : movement of the second rover
 
+L = left, R = right, M = move (forward), N = north, E = east, S = south, W = west
+
 Result:
 
 1 3 N
