@@ -2,13 +2,13 @@
 
 ## To launch the app
 
-- you need to be on Windows
+- need to be on Windows
 
-- run the MarsApp.exe in MarsApp/binary with a CLI with the following CL: MarsApp.exe Direction.txt
+- run MarsApp.exe in MarsApp/binary with a CLI with the following CL: MarsApp.exe Direction.txt
 
 - to run with another dataset, use the following CL, where the parameter is the 'path' of your file (.txt): MarsApp.exe [path]
 
-- the main file is MarsApp/Program.cs
+- main file: MarsApp/Program.cs
 
 ## Example of data needed:
 
