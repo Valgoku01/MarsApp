@@ -1,4 +1,4 @@
-# Let's explore Mars with Microsoft .Net 4.6 -> C# CLI !
+# Let's explore Mars in C# with Microsoft .Net 4.6 !
 
 ## To launch the app
 
