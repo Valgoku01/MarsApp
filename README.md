@@ -27,6 +27,8 @@ MMRMMRMRRM
 
 5 5 : size of your map : x y
 
+L = left, R = right, M = move (forward), N = north, E = east, S = south, W = west
+
 1 2 N : position of the first rover
 
 LMLMLMLMM : movement of the first rover
@@ -34,8 +36,6 @@ LMLMLMLMM : movement of the first rover
 3 3 E : position of the second rover
 
 MMRMMRMRRM : movement of the second rover
-
-L = left, R = right, M = move (forward), N = north, E = east, S = south, W = west
 
 Result:
 
