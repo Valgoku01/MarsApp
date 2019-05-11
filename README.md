@@ -1,6 +1,6 @@
-Let's explore Mars !
+# Let's explore Mars !
 
-To launch the app
+## To launch the app
 
 -you need to be on Windows
 
@@ -10,7 +10,7 @@ To launch the app
 
 -the main file is MarsApp/Program.cs
 
-Example of data needed:
+## Example of data needed:
 
 5 5
 
@@ -23,7 +23,7 @@ LMLMLMLMM
 MMRMMRMRRM
 
 
-Explanation:
+## Explanation:
 
 5 5 : size of your map : x y
 
