@@ -1,5 +1,9 @@
 # Let's explore Mars in C# with Microsoft .Net 4.6 !
 
+"license": "UNLICENSED"
+
+"private": true
+
 ## To launch the app
 
 - need to be on Windows
